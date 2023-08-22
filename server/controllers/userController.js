@@ -1,7 +1,6 @@
 const user = require('../models/userModel');
 const UserNotFound = "User Not Found";
 const UserAlreadyExists = "User Already Exists";
-
 const getUser = async (req, res) => {
     const username = req.body.username;
 
@@ -12,7 +11,7 @@ const getUser = async (req, res) => {
         return res.json(getUser);
     } catch (err)
     {
-        const error = err === UserNotFound || "Server Error";
+        const error = (err === UserNotFound)?UserNotFound:"Server Error";
         return res.json({"error": error});
     }
 }
@@ -31,7 +30,7 @@ const createUser = async (req, res) => {
         res.json(newUser);
     } catch (err)
     {
-        const error = err === UserAlreadyExists || "Server Error";
+        const error = (err === UserAlreadyExists)?UserAlreadyExists:"Server Error";
         return res.json({"error": error});
     }
 }

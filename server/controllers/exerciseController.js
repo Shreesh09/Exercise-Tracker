@@ -1,4 +1,5 @@
 const exercise = require('../models/exerciseModel');
+const mongoose = require('mongoose');
 
 const createExercise = async (req, res) => {
     const exerciseBody = req.body;
@@ -13,9 +14,9 @@ const createExercise = async (req, res) => {
 }
 
 const getAllUserExercises = async (req, res) => {
-    const id = req.body.id;
+    const user = req.body.user;
     try {
-        const exercises = await exercise.find({user: id});
+        const exercises = await exercise.find({user: user});
         return res.json(exercises);
     } catch (err) {
         res.json({error: "Server Error"});
