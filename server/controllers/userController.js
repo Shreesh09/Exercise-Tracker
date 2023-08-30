@@ -6,13 +6,16 @@ const getUser = async (req, res) => {
 
     try {
         const getUser = await user.findOne({username: username});
+
         if(!getUser)
             throw UserNotFound;
+
         return res.json(getUser);
     } catch (err)
     {
-        const error = (err === UserNotFound)?UserNotFound:"Server Error";
-        return res.json({"error": error});
+        if(err === UserNotFound)
+            return res.status(404).json({"error": err});
+        return res.status(500).json({"error": err})
     }
 }
 
@@ -30,8 +33,9 @@ const createUser = async (req, res) => {
         res.json(newUser);
     } catch (err)
     {
-        const error = (err === UserAlreadyExists)?UserAlreadyExists:"Server Error";
-        return res.json({"error": error});
+        if(err === UserAlreadyExists)
+            return res.status(409).json({"error": err});
+        return res.status(500).json({"error": err})
     }
 }
 
