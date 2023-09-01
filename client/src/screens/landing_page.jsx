@@ -1,4 +1,4 @@
-import {useEffect, useLayoutEffect, useRef, useState} from "react";
+import {useCallback, useLayoutEffect, useState} from "react";
 import Spline from '@splinetool/react-spline';
 import './styles/landing_page_styles.css'
 import {gsap} from "gsap";
@@ -11,34 +11,56 @@ function Navbar() {
     );
 }
 
-function Text(){
+const Text = ({addAnimation, index})=> {
+    useLayoutEffect(
+        () => {
+            const ctx = gsap.context(() => {
+                const animation1 = gsap.fromTo("#track", {x: -1000}, {x: 0});
+                addAnimation(animation1, index);
+                const animation2 = gsap.fromTo("#your", {x: -1000}, {x: 0});
+                addAnimation(animation2, ">");
+                const animation3 = gsap.fromTo("#workouts", {x: -1000}, {x: 0});
+                addAnimation(animation3, ">");
+
+            });
+
+            return () => ctx.revert();
+        },
+        [addAnimation, index]
+    );
     return (
         <div id={"Text"}>
-            <h1>TRACK</h1>
-            <h1>YOUR</h1>
-            <h1>WORKOUTS</h1>
+            <h1 id={"track"}>TRACK</h1>
+            <h1 id={"your"}>YOUR</h1>
+            <h1 id={"workouts"}>WORKOUTS</h1>
         </div>
     );
-}
+};
 
-function Arm() {
+function Arm({ addAnimation, index}) {
     const [arm, setArm] = useState();
     useLayoutEffect(
         () => {
             if(!arm)
                 return;
-            gsap.set(arm.scale, { x: 2.2, y: 2.2, z: 2.2 });
-            gsap.set(arm.position, { x: -110, y: 380 });
+            const ctx = gsap.context(() => {
+                addAnimation(gsap.fromTo("#Arm", {x:-1000}, {x: 0}), index)
+                addAnimation(gsap.set(arm.scale, {x: 2.2, y: 2.2, z: 2.2}), "<");
+                addAnimation(gsap.fromTo(arm.position, {x: -1000, y: 380}, {x: -110, y: 380}), ">");
+            });
+
+            return () => ctx.revert();
         },
-        [arm]
+        [arm, addAnimation, index]
     );
-    function onLoad(spline) {
-        setArm(spline.findObjectByName('arm'))
-    }
 
     return(
         <div id={"Arm"}>
-            <Spline onLoad={onLoad} scene="https://prod.spline.design/dByJznS-hnkY8WiL/scene.splinecode" />
+            <Spline onLoad={
+                (spline) => {
+                setArm(spline.findObjectByName('arm'))
+                }
+            } scene="https://prod.spline.design/dByJznS-hnkY8WiL/scene.splinecode" />
 
         </div>
     );
@@ -72,15 +94,33 @@ function GetStarted() {
 }
 
 export default function LandingPage() {
+    const [tl, setTl] = useState();
+
+    useLayoutEffect(() => {
+        const ctx = gsap.context(() => {
+            const tl = gsap.timeline();
+            setTl(tl);
+        });
+        return () => ctx.revert();
+    }, []);
+
+    const addAnimation = useCallback(
+        (animation, index) => {
+            tl && tl.add(animation, index);
+        }, [tl]
+    );
     return (
         <div id={"body"}>
             <Navbar/>
             <div id={"ContentBox"}>
-                <Text/>
-                <Arm/>
+                <Text addAnimation={addAnimation} index={">"}/>
+                <Arm addAnimation={addAnimation} index={0}/>
                 <BarGraph/>
             </div>
             <GetStarted/>
         </div>
     );
 }
+
+
+// <Arm addAnimation={addAnimation} index={0}/>
