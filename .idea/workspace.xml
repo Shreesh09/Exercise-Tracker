@@ -56,8 +56,9 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\shree\WebstormProjects\exercise-tracker\client\src\screens\styles\landing_page" />
+      <recent name="C:\Users\shree\WebstormProjects\exercise-tracker\client\src\assets\icons" />
       <recent name="C:\Users\shree\WebstormProjects\exercise-tracker\client\src\screens\landing_page" />
+      <recent name="C:\Users\shree\WebstormProjects\exercise-tracker\client\src\screens\styles\landing_page" />
       <recent name="C:\Users\shree\WebstormProjects\exercise-tracker\client\src\screens\styles" />
       <recent name="C:\Users\shree\WebstormProjects\exercise-tracker\client\src\screens" />
     </key>
@@ -119,7 +120,8 @@
       <workItem from="1693550511769" duration="2147000" />
       <workItem from="1693554716936" duration="1301000" />
       <workItem from="1693576663842" duration="3321000" />
-      <workItem from="1693635154666" duration="9422000" />
+      <workItem from="1693635154666" duration="13823000" />
+      <workItem from="1693659395799" duration="1396000" />
     </task>
     <servers />
   </component>

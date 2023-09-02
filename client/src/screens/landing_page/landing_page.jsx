@@ -15,9 +15,9 @@ function Arm({index}) {
             if(!arm)
                 return;
             const ctx = gsap.context(() => {
-                addAnimation(gsap.fromTo("#Arm", {x:-1000}, {x: 0}), index)
+                addAnimation(gsap.from("#Arm", {x:-1000}, {x: 0}), index)
+                addAnimation(gsap.fromTo(arm.position, {x: -1000, y: 380}, {x: 20, y: 350}), ">");
                 addAnimation(gsap.set(arm.scale, {x: 2.2, y: 2.2, z: 2.2}), "<");
-                addAnimation(gsap.fromTo(arm.position, {x: -1000, y: 380}, {x: -110, y: 380}), ">");
             });
 
             return () => {
