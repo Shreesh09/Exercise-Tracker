@@ -1,7 +1,6 @@
-import {useCallback, useLayoutEffect, useState} from "react";
-import Spline from '@splinetool/react-spline';
-import './styles/landing_page_styles.css'
+import {useContext, useLayoutEffect} from "react";
 import {gsap} from "gsap";
+import {timelineContext} from "./landing_page.jsx";
 
 function Navbar() {
     return (
@@ -11,7 +10,8 @@ function Navbar() {
     );
 }
 
-const Text = ({addAnimation, index})=> {
+const Text = ({index})=> {
+    const { addAnimation } = useContext(timelineContext);
     useLayoutEffect(
         () => {
             const ctx = gsap.context(() => {
@@ -36,35 +36,6 @@ const Text = ({addAnimation, index})=> {
         </div>
     );
 };
-
-function Arm({ addAnimation, index}) {
-    const [arm, setArm] = useState();
-    useLayoutEffect(
-        () => {
-            if(!arm)
-                return;
-            const ctx = gsap.context(() => {
-                addAnimation(gsap.fromTo("#Arm", {x:-1000}, {x: 0}), index)
-                addAnimation(gsap.set(arm.scale, {x: 2.2, y: 2.2, z: 2.2}), "<");
-                addAnimation(gsap.fromTo(arm.position, {x: -1000, y: 380}, {x: -110, y: 380}), ">");
-            });
-
-            return () => ctx.revert();
-        },
-        [arm, addAnimation, index]
-    );
-
-    return(
-        <div id={"Arm"}>
-            <Spline onLoad={
-                (spline) => {
-                setArm(spline.findObjectByName('arm'))
-                }
-            } scene="https://prod.spline.design/dByJznS-hnkY8WiL/scene.splinecode" />
-
-        </div>
-    );
-}
 
 function BarGraph() {
     return (
@@ -93,34 +64,16 @@ function GetStarted() {
     );
 }
 
-export default function LandingPage() {
-    const [tl, setTl] = useState();
-
-    useLayoutEffect(() => {
-        const ctx = gsap.context(() => {
-            const tl = gsap.timeline();
-            setTl(tl);
-        });
-        return () => ctx.revert();
-    }, []);
-
-    const addAnimation = useCallback(
-        (animation, index) => {
-            tl && tl.add(animation, index);
-        }, [tl]
-    );
-    return (
-        <div id={"body"}>
+export default function Page1()
+{
+    return(
+        <div id={"page1"}>
             <Navbar/>
             <div id={"ContentBox"}>
-                <Text addAnimation={addAnimation} index={">"}/>
-                <Arm addAnimation={addAnimation} index={0}/>
+                <Text index={">"}/>
                 <BarGraph/>
             </div>
             <GetStarted/>
         </div>
-    );
+    )
 }
-
-
-// <Arm addAnimation={addAnimation} index={0}/>

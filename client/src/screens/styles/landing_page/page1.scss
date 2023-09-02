@@ -1,15 +1,8 @@
-$primary: #4E3640;
-$secondary: #C9D0D9;
-$accent: #687E58;
+@import "landing_page_constants";
 
-#body{
+#page1{
   width: 100%;
   height: 100%;
-  overflow: hidden;
-  position: absolute;
-  top: 0;
-  left: 0;
-  font-family: 'Lexend', sans-serif;
 }
 
 #Navbar{
@@ -49,13 +42,6 @@ $accent: #687E58;
   h1 {
     margin: 45px 0;
   }
-}
-
-
-#Arm {
-  position: absolute;
-  top: 0;
-  left: 0;
 }
 
 
@@ -128,5 +114,3 @@ $bar-width: 10%;
   color: white;
   font-family: 'Lexend', sans-serif;
 }
-
-

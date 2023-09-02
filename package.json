@@ -14,5 +14,9 @@
   },
   "keywords": [],
   "author": "shreesh",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "@splinetool/react-spline": "^2.2.6",
+    "@splinetool/runtime": "^0.9.436"
+  }
 }

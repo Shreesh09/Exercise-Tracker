@@ -1,11 +1,6 @@
-#body {
+#page1 {
   width: 100%;
   height: 100%;
-  overflow: hidden;
-  position: absolute;
-  top: 0;
-  left: 0;
-  font-family: "Lexend", sans-serif;
 }
 
 #Navbar {
@@ -41,12 +36,6 @@
 }
 #Text h1 {
   margin: 45px 0;
-}
-
-#Arm {
-  position: absolute;
-  top: 0;
-  left: 0;
 }
 
 #ContentBox {
@@ -106,6 +95,30 @@
   font-weight: 500;
   color: white;
   font-family: "Lexend", sans-serif;
+}
+
+#page2 {
+  width: 100%;
+  height: 100%;
+  background-color: black;
+}
+
+#body {
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-family: "Lexend", sans-serif;
+}
+
+#Arm {
+  z-index: 3;
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
 }
 
 /*# sourceMappingURL=landing_page_styles.css.map */

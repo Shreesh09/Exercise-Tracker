@@ -1,0 +1,24 @@
+@import 'page1';
+@import "page2";
+@import "landing_page_constants";
+
+#body{
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-family: 'Lexend', sans-serif;
+}
+
+#Arm {
+  z-index: 3;
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+}
+
+
+
