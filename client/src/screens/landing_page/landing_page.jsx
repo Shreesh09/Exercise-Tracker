@@ -4,6 +4,8 @@ import '../styles//landing_page/landing_page_styles.css'
 import {gsap} from "gsap";
 import Page1 from "./page1.jsx";
 import Page2 from "./page2.jsx";
+import {Page3} from "./page3.jsx";
+import Page4 from "./page4.jsx";
 
 const timelineContext = createContext({});
 
@@ -64,6 +66,8 @@ export default function LandingPage() {
                 <Arm index={0}/>
                 <Page1/>
                 <Page2/>
+                <Page3/>
+                <Page4/>
             </timelineContext.Provider>
         </div>
     );

@@ -1,0 +1,58 @@
+.index{
+  font-size: 64px;
+  font-weight: 800;
+}
+
+.highlight{
+  color: $accent;
+}
+
+#page3{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  h1{
+    margin: 0;
+    text-align: center;
+    font-size: 50px;
+    font-weight: 800;
+  }
+
+  h2{
+    font-size: 40px;
+    font-weight: 700;
+  }
+
+  #page3-content{
+    height: 90%;
+    width: 100%;
+    background-color: $secondary;
+
+
+    #step1{
+      position: absolute;
+      margin-top: 0;
+      width: 250px;
+      left: 200px;
+    }
+
+    #step2{
+      position: absolute;
+      margin-top: 50px;
+      left: 550px;
+      width: 600px;
+    }
+
+    #step3{
+      position: absolute;
+      margin-top: 180px;
+      left: 1050px;
+      width: 300px;
+    }
+
+  }
+
+}
