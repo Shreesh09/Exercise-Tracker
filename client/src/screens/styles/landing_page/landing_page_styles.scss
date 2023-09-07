@@ -4,10 +4,15 @@
 @import "page4";
 @import "landing_page_constants";
 
+.blank{
+  width: 100%;
+  height: 100%;
+}
+
 #body{
   width: 100%;
   height: 100%;
-  overflow-x: hidden;
+  overflow-x: clip;
   position: absolute;
   top: 0;
   left: 0;
@@ -15,7 +20,7 @@
 }
 
 #Arm {
-  z-index: 3;
+  z-index: 5;
   position: fixed;
   top: 0;
   left: 0;

@@ -4,9 +4,11 @@ import {timelineContext} from "./landing_page.jsx";
 
 function Navbar() {
     return (
-        <div id={"Navbar"}>
-            <h3>CHAD</h3><a id={"signuptext"}>Signup</a><a id={"logintext"}>Login</a>
-        </div>
+        <nav id={"Navbar"}>
+            <li id={"chad"}><h3>CHAD</h3></li>
+            <li><a id={"signuptext"} href={'#page4'}>Signup</a></li>
+            <li><a id={"logintext"}>Login</a></li>
+        </nav>
     );
 }
 

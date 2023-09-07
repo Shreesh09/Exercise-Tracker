@@ -1,3 +1,7 @@
+.highlight {
+  color: #687E58;
+}
+
 #page1 {
   width: 100%;
   height: 100%;
@@ -9,19 +13,26 @@
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
+  list-style-type: none;
 }
-#Navbar h3, #Navbar a {
+#Navbar h3 {
+  width: 100%;
   margin: 0;
   padding: 0;
+}
+#Navbar li {
+  margin-top: 15px;
+}
+#Navbar #chad {
+  margin: 10px 60% 0 0;
 }
 #Navbar h3 {
   font-family: "Lexend", sans-serif;
   font-weight: 800;
   font-size: 32px;
-  margin: 10px 60% 0 0;
 }
 #Navbar a {
-  margin-top: 10px;
+  text-decoration: none;
   font-size: 20px;
   font-weight: 600;
 }
@@ -104,6 +115,8 @@
 }
 
 #page2 {
+  z-index: 1;
+  position: fixed;
   width: 100%;
   height: 100%;
   background-color: #4E3640;
@@ -202,11 +215,11 @@
   font-weight: 800;
 }
 
-.highlight {
-  color: #687E58;
-}
-
 #page3 {
+  background-color: white;
+  z-index: 2;
+  position: fixed;
+  top: 900px;
   width: 100%;
   height: 100%;
   display: flex;
@@ -248,6 +261,9 @@
 }
 
 #page4 {
+  z-index: 4;
+  position: relative;
+  background-color: white;
   width: 100%;
   height: 100%;
 }
@@ -300,10 +316,19 @@
   border: none;
 }
 
+.highlight {
+  color: #687E58;
+}
+
+.blank {
+  width: 100%;
+  height: 100%;
+}
+
 #body {
   width: 100%;
   height: 100%;
-  overflow-x: hidden;
+  overflow-x: clip;
   position: absolute;
   top: 0;
   left: 0;
@@ -311,7 +336,7 @@
 }
 
 #Arm {
-  z-index: 3;
+  z-index: 5;
   position: fixed;
   top: 0;
   left: 0;

@@ -1,4 +1,26 @@
+import {useLayoutEffect} from "react";
+import gsap from "gsap";
+
 export function Page3() {
+
+    useLayoutEffect(() => {
+        const ctx = gsap.context(
+            gsap.to('#page2', {scrollTrigger: {
+                    trigger: "#page2",
+                    start: "top 0%",
+
+                    onLeaveBack: () => {
+                        gsap.to('#page3', {'top': 900});
+                    },
+                    onEnter: () =>  {
+                        gsap.to('#page3', {'top': 0});
+                    },
+                }})
+        );
+
+        return () => ctx.revert();
+    }, []);
+
     return(
       <div id={"page3"}>
           <h1>HOW TO USE?</h1>

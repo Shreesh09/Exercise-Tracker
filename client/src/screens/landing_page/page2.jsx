@@ -1,7 +1,32 @@
 import feat1 from '../../assets/icons/feat1.png'
 import feat2 from '../../assets/icons/feat2.png'
 import feat3 from '../../assets/icons/feat3.png'
+import {timelineContext} from "./landing_page.jsx";
+import {useContext, useEffect, useLayoutEffect} from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+gsap.registerPlugin(ScrollTrigger);
 export default function Page2(){
+    const context = useContext(timelineContext);
+
+    useLayoutEffect(() => {
+        const ctx = gsap.context(
+          gsap.to('#page2', {'top': 0, scrollTrigger: {
+                trigger: "#page2",
+                start: "top 90%",
+                end: "center 50%",
+                onLeaveBack: () => {
+                    gsap.to('#page2', {'top': 900});
+                },
+                onEnter: () =>  {
+                    gsap.to('#page2', {'top': 0});
+                },
+        }})
+    );
+
+        return () => ctx.revert();
+    }, []);
+
     return(
         <div id={"page2"}>
             <h1 id={"text2"}>WHY USE CHAD?</h1>
